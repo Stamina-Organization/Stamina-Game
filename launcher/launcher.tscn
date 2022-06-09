@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://launcher/startgame.gd" type="Script" id=1]
+[ext_resource path="res://assets/icons/settings-icons.png" type="Texture" id=2]
+[ext_resource path="res://launcher/settings/settingswindows.tscn" type="PackedScene" id=3]
+[ext_resource path="res://launcher/SettingsButton.gd" type="Script" id=4]
+[ext_resource path="res://launcher/testbutton.gd" type="Script" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 1888.0
+margin_bottom = 1048.0
+
+[node name="content" type="Panel" parent="Background/MarginContainer/VBoxContainer"]
+margin_right = 1856.0
+margin_bottom = 1016.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer/VBoxContainer/content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer/content/MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 1824.0
+margin_bottom = 984.0
+
+[node name="TextEdit" type="TextEdit" parent="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer"]
+show_behind_parent = true
+margin_right = 894.0
+margin_bottom = 952.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Patch Notes 0.0.1 : 
+
+
+- Ajout d'un système de mise à jour disponible pour tous.
+
+- Création d'un système de caméra troisième personne (actuellement incomplet avec un bug de rotation, correction lors du prochain patch)
+
+- Début d'un système d'options actuellement incomplet, pas de date quant à sa completion.
+
+- Aggrandissement de la map
+
+
+
+/!\\ Bug connu : 
+
+- Caméra à la troisième personne
+
+- Menu des options qui disparait quand on clique dessus
+
+- Glissade sur les pentes"
+readonly = true
+wrap_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer"]
+margin_left = 898.0
+margin_right = 1792.0
+margin_bottom = 952.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 64
+alignment = 1
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 894.0
+margin_bottom = 14.0
+text = "Test"
+align = 1
+
+[node name="Button" type="Button" parent="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 78.0
+margin_right = 894.0
+margin_bottom = 142.0
+rect_min_size = Vector2( 0, 64 )
+text = "Lancer une game"
+script = ExtResource( 1 )
+
+[node name="SettingsButton" type="Button" parent="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 206.0
+margin_right = 894.0
+margin_bottom = 952.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 2 )
+expand_icon = true
+script = ExtResource( 4 )
+
+[node name="Popup" parent="Background" instance=ExtResource( 3 )]
+
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer/VBoxContainer/Button" to="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer/VBoxContainer/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
