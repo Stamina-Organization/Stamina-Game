@@ -9,9 +9,10 @@ func _on_stay_game_pressed():
 	leave_or_not = "capture"
 
 
-
 func _on_leave_game_pressed():
 	get_tree().change_scene("res://launcher/launcher.tscn")
+	#var screen_size := OS.get_screen_size()
+	#OS.set_window_size(screen_size)
 	
 
 func _process(delta):

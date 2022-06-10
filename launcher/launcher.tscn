@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://launcher/startgame.gd" type="Script" id=1]
 [ext_resource path="res://assets/icons/settings-icons.png" type="Texture" id=2]
 [ext_resource path="res://launcher/settings/settingswindows.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/Kenney Future Narrow.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://launcher/testbutton.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -48,12 +52,13 @@ margin_right = 1824.0
 margin_bottom = 984.0
 
 [node name="TextEdit" type="TextEdit" parent="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer"]
+visible = false
 show_behind_parent = true
-margin_right = 894.0
+margin_right = 892.0
 margin_bottom = 952.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Patch Notes 0.0.1 : 
+text = "[b]Patch Notes 0.0.1 : [/b]
 
 
 - Ajout d'un système de mise à jour disponible pour tous.
@@ -75,6 +80,57 @@ text = "Patch Notes 0.0.1 :
 - Glissade sur les pentes"
 readonly = true
 wrap_enabled = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer"]
+margin_right = 894.0
+margin_bottom = 952.0
+focus_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[color=green]Patch Notes 0.0.1 :[/color]
+
+
+- Ajout d'un système de mise à jour disponible pour tous.
+
+- Création d'un système de caméra troisième personne (actuellement incomplet avec un bug de rotation, correction lors du prochain patch)
+
+- Début d'un système d'options actuellement incomplet, pas de date quant à sa completion.
+
+- Aggrandissement de la map
+
+
+
+[color=red]/!\\ Bug connu : [/color]
+
+- Caméra à la troisième personne
+
+- Menu des options qui disparait quand on clique dessus
+
+- Glissade sur les pentes"
+tab_size = 5
+text = "Patch Notes 0.0.1 :
+
+
+- Ajout d'un système de mise à jour disponible pour tous.
+
+- Création d'un système de caméra troisième personne (actuellement incomplet avec un bug de rotation, correction lors du prochain patch)
+
+- Début d'un système d'options actuellement incomplet, pas de date quant à sa completion.
+
+- Aggrandissement de la map
+
+
+
+/!\\ Bug connu : 
+
+- Caméra à la troisième personne
+
+- Menu des options qui disparait quand on clique dessus
+
+- Glissade sur les pentes"
+selection_enabled = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer"]
 margin_left = 898.0

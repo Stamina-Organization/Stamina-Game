@@ -8,15 +8,30 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://addons/godot-git-plugin/git_api.gdns"
+} ]
+_global_script_class_icons={
+"GitAPI": ""
+}
+
 [application]
 
 config/name="Stamina Game"
 run/main_scene="res://launcher/launcher.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Damage="*res://actors/utilities/damage.gd"
+
 [debug]
 
 settings/stdout/print_fps=true
+settings/stdout/verbose_stdout=true
 
 [display]
 
@@ -25,6 +40,10 @@ window/size/height=1080
 window/size/test_width=1280
 window/size/test_height=720
 window/dpi/allow_hidpi=true
+
+[gdnative]
+
+singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 
 [input]
 
@@ -71,5 +90,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-quality/filters/use_fxaa=true
+environment/default_clear_color=Color( 0.333333, 0.298039, 0.298039, 1 )
 environment/default_environment="res://default_env.tres"

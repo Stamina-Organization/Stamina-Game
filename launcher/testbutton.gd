@@ -1,6 +1,6 @@
 extends Control
 
-onready var settings_windows = $Background/Settings/Popup/PopupMenu
+onready var settings_windows = $Background/Settings/Popup/PopupPanel/PopupMenu
 onready var settings_popup = $Background/Settings/Popup
 
 func _on_SettingsButton_pressed():
