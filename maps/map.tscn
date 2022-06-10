@@ -6,7 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://djwqvaxkmnye3" path="res://actors/player/player.tscn" id="4"]
 [ext_resource type="Script" path="res://maps/map.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://bxia7mm044whd" path="res://maps/utility/exit.tscn" id="6"]
-[ext_resource type="Texture2D" uid="uid://d0725rwb7trh8" path="res://assets/textures/panorama.png" id="7_4pom1"]
+[ext_resource type="PackedScene" uid="uid://bh02ebip6iq1x" path="res://actors/ennemies/test/ennemy_test.tscn" id="8_jhawc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ls8ci"]
+sky_top_color = Color(0.266667, 0.52549, 0.886275, 1)
+sky_horizon_color = Color(0.630392, 0.681373, 0.755882, 1)
+ground_bottom_color = Color(0.254902, 0.2, 0.137255, 1)
+ground_horizon_color = Color(0.630392, 0.681373, 0.755882, 1)
+
+[sub_resource type="Sky" id="Sky_qawl2"]
+sky_material = SubResource( "ProceduralSkyMaterial_ls8ci" )
+
+[sub_resource type="Environment" id="Environment_svl7j"]
+background_mode = 2
+sky = SubResource( "Sky_qawl2" )
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="1"]
 albedo_texture = ExtResource( "2" )
@@ -23,24 +38,17 @@ albedo_texture = ExtResource( "1" )
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_t4w07"]
-panorama = ExtResource( "7_4pom1" )
-
-[sub_resource type="Sky" id="Sky_qnj4o"]
-sky_material = SubResource( "PanoramaSkyMaterial_t4w07" )
-
-[sub_resource type="Environment" id="Environment_giffq"]
-background_mode = 2
-sky = SubResource( "Sky_qnj4o" )
-auto_exposure_enabled = true
-fog_enabled = true
-fog_light_energy = 5.0
-fog_density = 0.0001
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.025
-
 [node name="Map" type="Node3D"]
 script = ExtResource( "5" )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "Environment_svl7j" )
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.327218, -0.548735, 0.769298, 0, 0.814116, 0.580703, -0.944949, 0.190016, -0.266393, 35.8792, 24.2434, -11.4627)
+light_color = Color(0.968627, 0.815686, 0.815686, 1)
+shadow_enabled = true
+directional_shadow_max_distance = 250.0
 
 [node name="Player" parent="." instance=ExtResource( "4" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 12)
@@ -55,7 +63,8 @@ size = Vector3(100, 1, 100)
 material = SubResource( "1" )
 
 [node name="Box" type="CSGBox3D" parent="CSGCombiner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.5, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, 6)
+size = Vector3(2, 2, 2)
 material = SubResource( "2" )
 
 [node name="Slope" type="CSGPolygon3D" parent="CSGCombiner"]
@@ -65,35 +74,43 @@ depth = 3.0
 material = SubResource( "3" )
 
 [node name="Box2" type="CSGBox3D" parent="CSGCombiner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.5, 26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2, 26)
+size = Vector3(2, 2, 2)
 material = SubResource( "2" )
 
 [node name="Box3" type="CSGBox3D" parent="CSGCombiner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.5, -24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 2, -24)
+size = Vector3(2, 2, 2)
 material = SubResource( "2" )
 
 [node name="Box4" type="CSGBox3D" parent="CSGCombiner"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -36.1798, 1.5, -12.8588)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -36.1798, 2, -12.8588)
+size = Vector3(2, 2, 2)
 material = SubResource( "2" )
 
 [node name="Box5" type="CSGBox3D" parent="CSGCombiner"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -40.0689, 1.5, 11.5364)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -40.0689, 2, 11.5364)
+size = Vector3(2, 2, 2)
 material = SubResource( "2" )
 
 [node name="Box6" type="CSGBox3D" parent="CSGCombiner"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -1.17804, 1.5, -20.2834)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -1.17804, 2, -20.2834)
+size = Vector3(2, 2, 2)
 material = SubResource( "2" )
 
 [node name="Box7" type="CSGBox3D" parent="CSGCombiner"]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 22.7051, 1.5, 18.9437)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 22.7051, 2, 18.9437)
+size = Vector3(2, 2, 2)
 material = SubResource( "2" )
 
 [node name="Box8" type="CSGBox3D" parent="CSGCombiner"]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 39.2756, 1.5, -11.1136)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 39.2756, 2, -11.1136)
+size = Vector3(2, 2, 2)
 material = SubResource( "2" )
 
 [node name="Box9" type="CSGBox3D" parent="CSGCombiner"]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 22.4744, 1.5, -40.4437)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 22.4744, 2, -40.4437)
+size = Vector3(2, 2, 2)
 material = SubResource( "2" )
 
 [node name="Slope2" type="CSGPolygon3D" parent="CSGCombiner"]
@@ -110,5 +127,5 @@ material = SubResource( "3" )
 
 [node name="Exit" parent="." instance=ExtResource( "6" )]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( "Environment_giffq" )
+[node name="CharacterBody3D" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9302, 2.00193, 0)

@@ -11,7 +11,7 @@ const display_resolutions = [
 ]
 
 @onready var leavenode = preload("res://maps/utility/exit.tscn").instantiate()
-@onready var leave = $Exit/Panel/Popup
+@onready var leave = $Exit/Panel
 
 func _ready():
 	pass
@@ -20,8 +20,10 @@ func _ready():
 	#OS.set_window_size(screen_size)
 
 func _process(_delta):
-	if Input.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		leave.popup_centered()
+	leave_game()
 		#get_tree().change_scene("res://launcher/launcher.tscn")
 
+func leave_game():
+	if Input.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		$Exit.show()

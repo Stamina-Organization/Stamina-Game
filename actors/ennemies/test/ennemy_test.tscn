@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh02ebip6iq1x"]
+
+[ext_resource type="Script" path="res://actors/ennemies/test/ennmy_test.gd" id="1_ixdhl"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i8kl5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oxtt"]
+albedo_color = Color(1, 0.113725, 0.188235, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_amdbw"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87415, 0)
+
+[node name="Ennemy" type="Node3D" parent="."]
+script = ExtResource( "1_ixdhl" )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "CapsuleMesh_i8kl5" )
+skeleton = NodePath("../Ennemy")
+surface_material_override/0 = SubResource( "StandardMaterial3D_8oxtt" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "CapsuleShape3D_amdbw" )

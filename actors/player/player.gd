@@ -7,16 +7,16 @@ const MIN_TPS_CAMERA_ANGLE = -60
 const MAX_TPS_CAMERA_ANGLE = 45
 const GRAVITY = -20
 
+signal cast_spell(spell, direction, location)
+
+var spell_one = preload("res://actors/player/Spells/Spell1/Spell1.tscn")
 
 @export var camera_sensitivity: float = 0.1
 @export var speed: float = 10.0
 @export var acceleration: float = 6.0
 @export var jump_impulse: float = 12.0
 @export var camera_mode: String = "fps"
-@export var angular_acceleration: float = 7
 var true_velocity : Vector3 = Vector3.ZERO
-var camerot_h = 0
-var camerot_v = 0
 
 
 @onready var head = $Head/Camera
@@ -24,7 +24,6 @@ var camerot_v = 0
 
 
 func _ready():
-	#direction = Vector3.BACK.rotated(Vector3.UP, $TPS/h.global_transform.basis.get_euler().y)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	start_camera(camera_mode)
 	
@@ -32,19 +31,15 @@ func _physics_process(delta):
 	var movement = _get_movement_direction()
 	true_velocity.x = lerp(true_velocity.x, movement.x * speed,acceleration * delta)
 	true_velocity.z = lerp(true_velocity.z, movement.z * speed,acceleration * delta)
-	true_velocity.y += GRAVITY * delta
-
-	#if !is_on_floor():
-	#	axis_lock_motion_y = true
-	#elif is_on_floor():
-	#	axis_lock_motion_y = false
+	if !is_on_floor():
+		true_velocity.y += GRAVITY * delta
 
 	velocity = true_velocity
 	move_and_slide()
 	switch_camera()
-#	if camera_mode == "tps":
-#		$Body.rotation.y = lerp_angle($Body.rotation.y, $TPS/h/v/ClippedCamera.rotation.y, delta * angular_acceleration)
-
+	
+	if Input.is_action_just_pressed("first_spell"):
+		emit_signal("cast_spell", spell_one, rotation, position)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -66,13 +61,9 @@ func _handle_camera_rotation(event):
 		#	$TPS/h.rotate_y(deg2rad(-event.relative.x * camera_sensitivity))
 		#	$TPS/h/v.rotate_x(deg2rad(-event.relative.y * camera_sensitivity))
 		#	$TPS/h/v.rotation.x = clamp($TPS/h/v.rotation.x, deg2rad(MIN_TPS_CAMERA_ANGLE), deg2rad((MAX_TPS_CAMERA_ANGLE)))
-		#camerot_h += -event.relative.x * camera_sensitivity
-		#$TPS/h.rotation_degrees.y = camerot_h
-		#camerot_v += -event.relative.y * camera_sensitivity
-		#$TPS/h/v.rotation_degrees.x = clamp(camerot_v, MIN_TPS_CAMERA_ANGLE, MAX_TPS_CAMERA_ANGLE)
 
 func _get_movement_direction():
-	var direction = Vector3.UP
+	var direction = Vector3.DOWN
 	
 	if Input.is_action_pressed("forward"):
 		direction -= transform.basis.z

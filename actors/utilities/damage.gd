@@ -1,5 +1,5 @@
 extends Node
 
 
-func damage(damage: int, sender: String, receiver: String):
-	print(damage, sender, receiver)
+func damage(damage_amount: int, sender: String, receiver: String):
+	print(damage_amount, sender, receiver)

@@ -9,3 +9,6 @@ res://maps/map.tscn
 res://maps/utility/leave-stay.gd
 res://launcher/settings/settingswindows.tscn
 res://maps/utility/exit.tscn
+res://actors/utilities/damage.gd
+res://actors/ennemies/test/ennemy_test.tscn
+res://actors/player/Spells/Spell1/Spell1.tscn

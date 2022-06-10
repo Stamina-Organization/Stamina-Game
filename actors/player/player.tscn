@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://djwqvaxkmnye3"]
+[gd_scene load_steps=7 format=3 uid="uid://djwqvaxkmnye3"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://haa4u6xqy4t8" path="res://actors/player/Spells/Spell1/Spell1.tscn" id="2_aq5qa"]
 
 [sub_resource type="CapsuleMesh" id="1"]
 
@@ -14,10 +15,11 @@ size = Vector3(1, 0.5, 0.5)
 height = 1.89963
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 collision_layer = 2
 collision_mask = 3
 slide_on_ceiling = false
+wall_min_slide_angle = 1.309
 script = ExtResource( "1" )
 
 [node name="Body" type="MeshInstance3D" parent="."]
@@ -48,4 +50,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76243, 0)
 [node name="v" type="Node3D" parent="TPS/h"]
 
 [node name="Camera3D" type="Camera3D" parent="TPS/h/v"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.860888, -0.0357859, 2.75386)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, -0.04, 2.8)
+doppler_tracking = 2
+
+[node name="AnimatableBody3D" parent="." instance=ExtResource( "2_aq5qa" )]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.485578, 0.953954, -0.1065)
