@@ -1,4 +1,4 @@
-extends KinematicBody
+extends CharacterBody3D
 
 
 const MIN_FPS_CAMERA_ANGLE = -60
@@ -8,19 +8,19 @@ const MAX_TPS_CAMERA_ANGLE = 45
 const GRAVITY = -20
 
 
-export var camera_sensitivity: float = 0.1
-export var speed: float = 10.0
-export var acceleration: float = 6.0
-export var jump_impulse: float = 12.0
-export var camera_mode: String = "fps"
-export var angular_acceleration: float = 7
-var velocity : Vector3 = Vector3.ZERO
+@export var camera_sensitivity: float = 0.1
+@export var speed: float = 10.0
+@export var acceleration: float = 6.0
+@export var jump_impulse: float = 12.0
+@export var camera_mode: String = "fps"
+@export var angular_acceleration: float = 7
+var true_velocity : Vector3 = Vector3.ZERO
 var camerot_h = 0
 var camerot_v = 0
 
 
-onready var head: Spatial = $Head
-onready var tps: Spatial = $TPS
+@onready var head = $Head/Camera
+@onready var tps = $TPS
 
 
 func _ready():
@@ -30,17 +30,18 @@ func _ready():
 	
 func _physics_process(delta):
 	var movement = _get_movement_direction()
-	velocity.x = lerp(velocity.x, movement.x * speed,acceleration * delta)
-	velocity.z = lerp(velocity.z, movement.z * speed,acceleration * delta)
-	velocity.y += GRAVITY * delta
+	true_velocity.x = lerp(true_velocity.x, movement.x * speed,acceleration * delta)
+	true_velocity.z = lerp(true_velocity.z, movement.z * speed,acceleration * delta)
+	true_velocity.y += GRAVITY * delta
 
-	if !is_on_floor():
-		axis_lock_motion_y = true
-	elif is_on_floor():
-		axis_lock_motion_y = false
+	#if !is_on_floor():
+	#	axis_lock_motion_y = true
+	#elif is_on_floor():
+	#	axis_lock_motion_y = false
 
-	velocity = move_and_slide(velocity, Vector3.UP, true)
-	_switch_camera()
+	velocity = true_velocity
+	move_and_slide()
+	switch_camera()
 #	if camera_mode == "tps":
 #		$Body.rotation.y = lerp_angle($Body.rotation.y, $TPS/h/v/ClippedCamera.rotation.y, delta * angular_acceleration)
 
@@ -71,7 +72,7 @@ func _handle_camera_rotation(event):
 		#$TPS/h/v.rotation_degrees.x = clamp(camerot_v, MIN_TPS_CAMERA_ANGLE, MAX_TPS_CAMERA_ANGLE)
 
 func _get_movement_direction():
-	var direction = Vector3.DOWN
+	var direction = Vector3.UP
 	
 	if Input.is_action_pressed("forward"):
 		direction -= transform.basis.z
@@ -82,30 +83,32 @@ func _get_movement_direction():
 	if Input.is_action_pressed("right"):
 		direction += transform.basis.x
 	if Input.is_action_pressed("jump") and is_on_floor():
-		velocity.y = jump_impulse
+		true_velocity.y = jump_impulse
 	
 	return direction.normalized()
 
-func _switch_camera():
+func switch_camera():
 	if Input.is_action_just_pressed("change_view"):
-		if $Head/Camera.current == true:
-			$Head/Camera.clear_current(true)
+		print("Changer de caméra")
+		if $"Head/Camera".current == true:
+			print("F P S  to  T P S")
+			$"Head/Camera".clear_current(true)
 			camera_mode = "tps"
-			$TPS/h/v/ClippedCamera.make_current()
+			$"TPS/h/v/Camera3D".make_current()
 			print(camera_mode)
-		
-		elif $TPS/h/v/ClippedCamera.current == true:
-			$TPS/h/v/ClippedCamera.clear_current(true)
+		elif $"TPS/h/v/Camera3D".current == true:
+			print("T P S  to  F P S")
+			$"TPS/h/v/Camera3D".clear_current(true)
 			camera_mode = "fps"
-			$Head/Camera.make_current()
+			$"Head/Camera".make_current()
 			print(camera_mode)
 
 func start_camera(mode: String):
 	if mode == "fps":
-		$TPS/h/v/ClippedCamera.clear_current(true)
-		$Head/Camera.make_current()
+		$"TPS/h/v/Camera3D".clear_current(true)
+		$"Head/Camera".make_current()
 		print("Mode de départ : " + mode)
 	elif mode == "tps":
-		$Head/Camera.clear_current(true)
-		$TPS/h/v/ClippedCamera.make_current()
+		$"Head/Camera".clear_current(true)
+		$"TPS/h/v/Camera3D".make_current()
 		print("Mode de départ : " + mode)

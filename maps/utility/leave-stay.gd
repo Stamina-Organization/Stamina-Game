@@ -1,6 +1,6 @@
 extends Control
 
-onready var leave_windows = $Panel/Popup
+@onready var leave_windows = $Panel/Popup
 var leave_or_not = "capture"
 
 
@@ -15,7 +15,7 @@ func _on_leave_game_pressed():
 	#OS.set_window_size(screen_size)
 	
 
-func _process(delta):
+func _process(_delta):
 	if leave_or_not == "visible":
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if leave_or_not == "capture":

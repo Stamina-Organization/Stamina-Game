@@ -1,0 +1,11 @@
+res://launcher/launcher.tscn
+res://maps/map.gd
+res://launcher/startgame.gd
+res://launcher/settings/settingsmenu.gd
+res://actors/player/player.tscn
+res://actors/player/player.gd
+res://launcher/testbutton.gd
+res://maps/map.tscn
+res://maps/utility/leave-stay.gd
+res://launcher/settings/settingswindows.tscn
+res://maps/utility/exit.tscn
