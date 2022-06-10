@@ -33,7 +33,7 @@ func _physics_process(delta):
 	velocity.x = lerp(velocity.x, movement.x * speed,acceleration * delta)
 	velocity.z = lerp(velocity.z, movement.z * speed,acceleration * delta)
 	velocity.y += GRAVITY * delta
-	velocity = move_and_slide(velocity, Vector3.UP, true)
+	velocity = move_and_slide_with_snap(velocity, Vector3.FORWARD, Vector3.UP, true)
 	
 	_switch_camera()
 #	if camera_mode == "tps":
@@ -54,6 +54,8 @@ func _handle_camera_rotation(event):
 			rotate_y(deg2rad(-event.relative.x * camera_sensitivity))
 			tps.rotate_x(deg2rad(-event.relative.y * camera_sensitivity))
 			tps.rotation.x = clamp(tps.rotation.x, deg2rad(MIN_TPS_CAMERA_ANGLE), deg2rad((MAX_TPS_CAMERA_ANGLE)))
+			#var direction = Basis.from_euler (Vector3(velocity.x, 0, velocity.z))
+			#tps.global_transform.basis = direction
 		elif velocity.x == 0 && velocity.z == 0 :
 			$TPS/h.rotate_y(deg2rad(-event.relative.x * camera_sensitivity))
 			$TPS/h/v.rotate_x(deg2rad(-event.relative.y * camera_sensitivity))

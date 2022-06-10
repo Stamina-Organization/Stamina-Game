@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://launcher/startgame.gd" type="Script" id=1]
 [ext_resource path="res://assets/icons/settings-icons.png" type="Texture" id=2]
 [ext_resource path="res://launcher/settings/settingswindows.tscn" type="PackedScene" id=3]
-[ext_resource path="res://launcher/SettingsButton.gd" type="Script" id=4]
 [ext_resource path="res://launcher/testbutton.gd" type="Script" id=5]
 
 [node name="Control" type="Control"]
@@ -108,9 +107,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = ExtResource( 2 )
 expand_icon = true
-script = ExtResource( 4 )
 
-[node name="Popup" parent="Background" instance=ExtResource( 3 )]
+[node name="Settings" parent="Background" instance=ExtResource( 3 )]
 
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer/VBoxContainer/Button" to="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer/VBoxContainer/Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/content/MarginContainer/HBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
