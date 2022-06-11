@@ -9,7 +9,7 @@ const GRAVITY = -20
 
 signal cast_spell(spell, direction, location)
 
-var spell_one = preload("res://actors/player/Spells/Spell1/Spell1.tscn")
+@onready var spell_one = preload("res://actors/player/Spells/Spell1/Spell1.tscn")
 
 @export var camera_sensitivity: float = 0.1
 @export var speed: float = 10.0

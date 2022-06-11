@@ -26,6 +26,7 @@ settings/stdout/verbose_stdout=true
 
 [display]
 
+window/size/resizable=false
 window/size/width=1920
 window/size/height=1080
 window/size/test_width=1280

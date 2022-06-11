@@ -129,3 +129,5 @@ material = SubResource( "3" )
 
 [node name="CharacterBody3D" parent="." instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9302, 2.00193, 0)
+
+[connection signal="cast_spell" from="Player" to="." method="_on_player_cast_spell"]

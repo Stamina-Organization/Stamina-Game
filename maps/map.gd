@@ -13,6 +13,8 @@ const display_resolutions = [
 @onready var leavenode = preload("res://maps/utility/exit.tscn").instantiate()
 @onready var leave = $Exit/Panel
 
+var spell_velocity = Vector3.FORWARD
+
 func _ready():
 	pass
 	#OS.set_window_fullscreen(true)
@@ -27,3 +29,11 @@ func leave_game():
 	if Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		$Exit.show()
+
+
+func _on_player_cast_spell(spell, direction, location):
+	var b = spell.instantiate()
+	add_child(b)
+	b.rotation = direction
+	b.position = location
+	b.velocity = b.velocity.rotated(location, direction.y)
