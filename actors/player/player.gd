@@ -11,6 +11,7 @@ signal cast_spell(spell, direction, location)
 
 @onready var spell_one = preload("res://actors/player/Spells/Spell1/Spell1.tscn")
 
+
 @export var camera_sensitivity: float = 0.1
 @export var speed: float = 10.0
 @export var acceleration: float = 6.0
@@ -21,12 +22,21 @@ var true_velocity : Vector3 = Vector3.ZERO
 
 @onready var head = $Head/Camera
 @onready var tps = $TPS
+@onready var camcollider = $TPS/h/v/CamCollider
+@onready var camera = $TPS/h/v/Camera3D
 
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	start_camera(camera_mode)
 	
+
+func _process(delta):
+	if camcollider.is_colliding():
+		camera.global_transform.origin = camcollider.get_collision_point()
+	#else:
+	#	camera.translation = camcollider.target_position
+
 func _physics_process(delta):
 	var movement = _get_movement_direction()
 	true_velocity.x = lerp(true_velocity.x, movement.x * speed,acceleration * delta)

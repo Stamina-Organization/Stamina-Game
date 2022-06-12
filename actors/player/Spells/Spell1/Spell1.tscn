@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://haa4u6xqy4t8"]
+[gd_scene load_steps=6 format=3 uid="uid://haa4u6xqy4t8"]
 
 [ext_resource type="Script" path="res://actors/player/Spells/Spell1/Spell1_test.gd" id="1_p562b"]
 
@@ -9,9 +9,11 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htlck"]
 albedo_color = Color(0.458824, 1, 0.560784, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_gs2sk"]
+
 [node name="AnimatableBody3D" type="AnimatableBody3D"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-collision_layer = 0
+collision_layer = 6
 script = ExtResource( "1_p562b" )
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -29,4 +31,14 @@ surface_material_override/0 = SubResource( "StandardMaterial3D_htlck" )
 wait_time = 8.0
 autostart = true
 
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource( "SphereShape3D_gs2sk" )
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area3D" to="." method="_on_area_3d_body_shape_exited"]

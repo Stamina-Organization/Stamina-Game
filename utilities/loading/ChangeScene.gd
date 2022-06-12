@@ -1,40 +1,43 @@
 extends Node
 
+@onready var loading_screen = preload("res://utilities/loading/LoadingScreen.tscn").instantiate()
+
 var progress = []
 var scene_load_status = 0
 
 var real_path = ""
-@onready var loading_bar = $ProgressBar
-@onready var lets_go_button = $LetsGoButton
-@onready var error = $Error
+@onready var loading_bar: ProgressBar
+@onready var error: RichTextLabel
+var curr
+var screen: bool
 @export var max_load_time = 10000
+
+func _ready():
+	loading_bar = loading_screen.get_node("ProgressBar")
+	error = loading_screen.get_node("Error")
 
 func _process(_delta):
 	
 	scene_load_status = ResourceLoader.load_threaded_get_status(real_path, progress)
-	#loading_bar.value = progress[0] * 100
-	print(progress)
+	loading_bar.value = progress[0] * 100
 	
 	if scene_load_status == ResourceLoader.THREAD_LOAD_FAILED:
 		error.show()
 	if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
-		lets_go_button.show()
+		print("Chargement terminé")
+		get_tree().change_scene_to(ResourceLoader.load_threaded_get(real_path))
+		if screen == true:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		elif screen == false:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
 
 
 func goto_scene(path, current_scene, windows_mode: bool):
-	print("Début du chargement...")
-	
+	get_tree().change_scene("res://utilities/loading/LoadingScreen.tscn")
+	screen = windows_mode
+	curr = current_scene
 	real_path = path
 	
-	var loader = ResourceLoader.load_threaded_request(path)
-	
-	if windows_mode == true:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	elif windows_mode == false:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-
-
-
-func _on_lets_go_button_pressed():
-	get_tree().change_scene_to(ResourceLoader.load_threaded_get(real_path))
-	queue_free()
+	print("Début du chargement...")
+	ResourceLoader.load_threaded_request(real_path)

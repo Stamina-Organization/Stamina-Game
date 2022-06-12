@@ -3,16 +3,16 @@ extends Control
 @onready var settings_item = $Panel/ItemList
 
 var control_settings = [
-	"forward : W",
+	"forward : Z",
 	"backward : S",
-	"left : A",
+	"left : Q",
 	"right : D",
-	"jump : Space",
-	"dodge : Shift",
+	"jump : Espace",
+	"dodge : Shift (à venir...)",
 	"first_spell : a",
-	"second_spell : e",
-	"attack : Left Mouse Button",
-	"parry : Right Click Button"
+	"second_spell : e (à venir...)",
+	"attack : Clic gauche (à venir...)",
+	"parry : Clic droit (à venir...)"
 ]
 
 func _ready():

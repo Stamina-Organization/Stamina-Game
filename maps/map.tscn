@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bf5yqct5ldf0o"]
+[gd_scene load_steps=15 format=3 uid="uid://bf5yqct5ldf0o"]
 
 [ext_resource type="Texture2D" uid="uid://o4kcvijyr5o6" path="res://assets/textures/red_grid.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://u1fi2hi1q5th" path="res://assets/textures/dark_grid.png" id="2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://maps/map.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://bxia7mm044whd" path="res://maps/utility/exit.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://bh02ebip6iq1x" path="res://actors/ennemies/test/ennemy_test.tscn" id="8_jhawc"]
+[ext_resource type="AudioStream" uid="uid://cr2k7q7ymcte4" path="res://assets/music/Open.mp3" id="8_un6cj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ls8ci"]
 sky_top_color = Color(0.266667, 0.52549, 0.886275, 1)
@@ -55,7 +56,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 12)
 
 [node name="CSGCombiner" type="CSGCombiner3D" parent="."]
 use_collision = true
-collision_mask = 0
+collision_mask = 4
 
 [node name="Ground" type="CSGBox3D" parent="CSGCombiner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -129,5 +130,9 @@ material = SubResource( "3" )
 
 [node name="CharacterBody3D" parent="." instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9302, 2.00193, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( "8_un6cj" )
+autoplay = true
 
 [connection signal="cast_spell" from="Player" to="." method="_on_player_cast_spell"]

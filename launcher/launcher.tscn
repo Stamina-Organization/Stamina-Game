@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://ca7inx5ftu1vk"]
+[gd_scene load_steps=14 format=3 uid="uid://p8n8p8u4lagb"]
 
 [ext_resource type="Script" path="res://launcher/startgame.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://krhs62h4520w" path="res://assets/icons/settings-icons.png" id="2"]
 [ext_resource type="PackedScene" uid="uid://ugugowrhfdnf" path="res://launcher/settings/settingswindows.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://dcclxivjv6us6" path="res://assets/textures/971943.jpg" id="3_imjjj"]
 [ext_resource type="FontData" uid="uid://bfaxywek0j4u3" path="res://assets/fonts/Kenney Future Narrow.ttf" id="4"]
-[ext_resource type="Script" path="res://launcher/start_settings.gd" id="5"]
+[ext_resource type="Script" path="res://launcher/launcher.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://mxxesmkgo4qg" path="res://launcher/credits/credits.tscn" id="7_yy8pa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vob56"]
 texture = ExtResource( "3_imjjj" )
@@ -24,6 +25,9 @@ data/0 = ExtResource( "4" )
 [sub_resource type="Font" id="Font_g2qv6"]
 data/0 = ExtResource( "4" )
 
+[sub_resource type="Font" id="Font_44841"]
+data/0 = ExtResource( "4" )
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -36,8 +40,11 @@ anchor_bottom = 1.0
 [node name="content" type="Panel" parent="Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource( "StyleBoxTexture_vob56" )
+metadata/_edit_layout_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Background/content"]
 offset_left = 525.0
@@ -108,9 +115,21 @@ icon = ExtResource( "2" )
 flat = true
 expand_icon = true
 
+[node name="CreditsButton" type="Button" parent="Background/content"]
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 75.0
+offset_bottom = 40.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource( "Font_44841" )
+text = "Crédits"
+flat = true
+
 [node name="Settings" parent="Background" instance=ExtResource( "3" )]
 
-[connection signal="tree_exited" from="." to="." method="_on_control_tree_exited"]
-[connection signal="tree_exiting" from="." to="." method="_on_control_tree_exiting"]
+[node name="Credits" parent="Background" instance=ExtResource( "7_yy8pa" )]
+
 [connection signal="pressed" from="Background/content/StartGamee" to="Background/content/StartGamee" method="_on_start_gamee_pressed"]
 [connection signal="pressed" from="Background/content/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="Background/content/CreditsButton" to="." method="_on_credits_button_pressed"]

@@ -10,4 +10,4 @@ func _process(_delta):
 
 func _on_start_gamee_pressed():
 	ChangeScene.goto_scene("res://maps/map.tscn", self, true)
-
+	#get_tree().change_scene("res://maps/map.tscn")
