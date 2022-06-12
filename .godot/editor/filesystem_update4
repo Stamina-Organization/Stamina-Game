@@ -5,6 +5,11 @@ res://launcher/settings/settingswindows.tscn
 res://actors/ennemies/test/ennemy_test.tscn
 res://actors/player/Spells/Spell1/Spell1.tscn
 res://maps/utility/exit.tscn
-res://maps/map.gd
-res://actors/player/player.gd
+res://utilities/loading/ChangeScene.gd
+res://utilities/loading/loadingscreen.tscn
+res://launcher/startgame.gd
+res://utilities/loading/LoadingBar.tscn
 res://actors/player/Spells/Spell1/Spell1_test.gd
+res://launcher/settings/settingsmenu.gd
+res://maps/utility/leave-stay.gd
+res://utilities/loading/LoadingScreen.tscn

@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgvrc7ukhusui"]
+
+[ext_resource type="Script" path="res://utilities/loading/ChangeScene.gd" id="1_4llrb"]
+[ext_resource type="FontData" uid="uid://bfaxywek0j4u3" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_spe0c"]
+
+[sub_resource type="Font" id="Font_k6obt"]
+data/0 = ExtResource( "2_spe0c" )
+
+[node name="LoadingScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( "1_4llrb" )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -122.0
+offset_right = -60.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_layout_mode = 1
+
+[node name="LetsGoButton" type="Button" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 112.0
+offset_right = 50.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lessgooooo"
+metadata/_edit_layout_mode = 1
+
+[node name="Error" type="RichTextLabel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/normal_font = SubResource( "Font_k6obt" )
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "
+
+[center][color=red]LOADING ERROR[/color][/center]"
+
+[connection signal="pressed" from="LetsGoButton" to="." method="_on_lets_go_button_pressed"]

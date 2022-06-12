@@ -18,10 +18,10 @@ config/features=PackedStringArray("4.0")
 [autoload]
 
 Damage="*res://actors/utilities/damage.gd"
+ChangeScene="*res://utilities/loading/ChangeScene.gd"
 
 [debug]
 
-settings/stdout/print_fps=true
 settings/stdout/verbose_stdout=true
 
 [display]

@@ -1,8 +1,16 @@
+RichTextLabel
+Button
+ProgressBar
+ItemList
+TabBar
+CollisionPolygon3D
+Node3D
+Position3D
+RigidDynamicBody3D
+VehicleBody3D
 Label3D
 CheckButton
-Button
 Panel
-RichTextLabel
 Timer
 MeshInstance3D
 CollisionShape3D
@@ -10,7 +18,6 @@ AnimatableBody3D
 CharacterBody3D
 Control
 ReferenceRect
-ItemList
 OptionButton
 Tree
 PopupMenu

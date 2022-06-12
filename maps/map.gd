@@ -12,6 +12,7 @@ const display_resolutions = [
 
 @onready var leavenode = preload("res://maps/utility/exit.tscn").instantiate()
 @onready var leave = $Exit/Panel
+@onready var player = $Player
 
 var spell_velocity = Vector3.FORWARD
 
@@ -35,5 +36,6 @@ func _on_player_cast_spell(spell, direction, location):
 	var b = spell.instantiate()
 	add_child(b)
 	b.rotation = direction
-	b.position = location
-	b.velocity = b.velocity.rotated(location, direction.y)
+	b.position = location + Vector3(0,1,0)
+	#b.velocity = spell_velocity.rotated(Vector3(0,1,0), direction.y)
+	b.velocity = b.velocity.rotated(Vector3(0,1,0), direction.y)

@@ -2,27 +2,31 @@
 
 [ext_resource type="Script" path="res://actors/player/Spells/Spell1/Spell1_test.gd" id="1_p562b"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kfpcv"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_juth0"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_wsgi2"]
+[sub_resource type="SphereMesh" id="SphereMesh_tgvde"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejxa6"]
-albedo_color = Color(0.203922, 0.180392, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htlck"]
+albedo_color = Color(0.458824, 1, 0.560784, 1)
 
 [node name="AnimatableBody3D" type="AnimatableBody3D"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+collision_layer = 0
 script = ExtResource( "1_p562b" )
 
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-shape = SubResource( "CapsuleShape3D_kfpcv" )
+shape = SubResource( "SphereShape3D_juth0" )
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-mesh = SubResource( "CapsuleMesh_wsgi2" )
-surface_material_override/0 = SubResource( "StandardMaterial3D_ejxa6" )
+mesh = SubResource( "SphereMesh_tgvde" )
+surface_material_override/0 = SubResource( "StandardMaterial3D_htlck" )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 8.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

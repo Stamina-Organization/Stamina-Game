@@ -1,4 +1,10 @@
 extends AnimatableBody3D
 
+var velocity = Vector3.FORWARD
 
-var velocity = Vector3(0,0,0)
+func _physics_process(delta):
+	position += velocity * delta * 5
+
+
+func _on_timer_timeout():
+	queue_free()
