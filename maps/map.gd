@@ -18,13 +18,9 @@ var spell_velocity = Vector3.FORWARD
 
 func _ready():
 	pass
-	#OS.set_window_fullscreen(true)
-	#var screen_size := OS.get_screen_size()
-	#OS.set_window_size(screen_size)
 
 func _process(_delta):
 	leave_game()
-		#get_tree().change_scene("res://launcher/launcher.tscn")
 
 func leave_game():
 	if Input.is_action_pressed("ui_cancel"):

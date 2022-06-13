@@ -16,6 +16,7 @@ func _on_SettingsButton_pressed():
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		settings_windows.hide()
+		credits_windows.hide()
 
 func _on_credits_button_pressed():
 	if show_credits == false:

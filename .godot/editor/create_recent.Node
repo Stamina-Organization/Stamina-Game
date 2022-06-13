@@ -1,12 +1,13 @@
+TextureProgressBar
+ProgressBar
+CollisionShape3D
+Area3D
 RichTextLabel
 Label
 Panel
 Button
-CollisionShape3D
-Area3D
 AudioStreamPlayer
 RayCast3D
-ProgressBar
 ItemList
 TabBar
 CollisionPolygon3D

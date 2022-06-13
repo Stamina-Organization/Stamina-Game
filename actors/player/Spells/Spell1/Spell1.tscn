@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://haa4u6xqy4t8"]
+[gd_scene load_steps=8 format=3 uid="uid://haa4u6xqy4t8"]
 
 [ext_resource type="Script" path="res://actors/player/Spells/Spell1/Spell1_test.gd" id="1_p562b"]
+[ext_resource type="PackedScene" uid="uid://ck8ww3gfyqo8d" path="res://actors/utilities/hitbox.tscn" id="2_c7vr5"]
+[ext_resource type="Script" path="res://actors/utilities/hitbox.gd" id="3_lbjw6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_juth0"]
 
@@ -9,11 +11,11 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htlck"]
 albedo_color = Color(0.458824, 1, 0.560784, 1)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_gs2sk"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_hw5uh"]
 
-[node name="AnimatableBody3D" type="AnimatableBody3D"]
+[node name="Spell 1" type="AnimatableBody3D"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-collision_layer = 6
+collision_layer = 0
 script = ExtResource( "1_p562b" )
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -31,14 +33,14 @@ surface_material_override/0 = SubResource( "StandardMaterial3D_htlck" )
 wait_time = 8.0
 autostart = true
 
-[node name="Area3D" type="Area3D" parent="."]
-collision_layer = 7
-collision_mask = 7
+[node name="Hitbox" parent="." instance=ExtResource( "2_c7vr5" )]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource( "3_lbjw6" )
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource( "SphereShape3D_gs2sk" )
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource( "SphereShape3D_hw5uh" )
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
-[connection signal="body_shape_exited" from="Area3D" to="." method="_on_area_3d_body_shape_exited"]
+
+[editable path="Hitbox"]

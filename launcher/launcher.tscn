@@ -57,7 +57,47 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource( "Font_whhmf" )
 bbcode_enabled = true
-text = "[color=green]Patch Notes 0.0.1 :[/color]
+text = "[color=green]Patch Notes 0.0.2 preview : [/color]
+
+
+- Ajout d'un système permettant de quitter le jeu et de retourner au launcher de base  
+
+- Ajout d'un système d'options graphiques améliorant le rendu du jeu avec sauvegarde des informations (en cours, incomplet)   
+   \"=> Améliorations graphique actuelle : 
+     - La résolution se setup automatiquement en fonction de l'écran  
+     - Le jeu se met en grand écran automatiquement lorsque vous quittez le launcher et reviens en fenêtré lorsque vous quittez le jeu  
+     - Amélioration globale des graphismes du jeu  
+
+- Changement de la police d'écriture pour rendre le tout plus agréable à l'oeil  
+
+- Passage sur Godot 4 version de développement (des bugs sont donc probables dû au game engine)  
+
+- Caméra troisième personne :
+   \"=> Améliorations actuelles 
+     - Collision avec l'environnement 
+     - Correction du bug de rotation de la caméra 
+
+- Nouveau launcher plus agréables à l'oeil et moins archaïque  
+
+- Système de cast de spell (il permet de tirer une petite capsule dans une direction sur une certaine distance)  
+
+- Ajout d'une barre de chargement lorsqu'on lance le jeu en lui meme (elle ne se remplit pas encore à cause d'un probleme réglé dans le patch 0.0.2-stable
+
+- Dans le menu settings, ajout des touches utilisés in game  
+
+- Ajout d'une page de crédits 
+
+
+[color=red] Bugs connu [/color]
+
+- Problème pour escalader les pentes (le bug n'arrive pas tout le temps, normalement correction dans la version stable )
+
+- A cause de la mise à jour du moteur de jeu, le type de paramètres graphiques est différent, donc le menu des settings a été retiré pour pouvoir le recréer lors d'une prochaine mise à jour
+
+
+
+
+[color=green]Patch Notes 0.0.1 :[/color]
 
 
 [fill]- Ajout d'un système de mise à jour disponible pour tous.

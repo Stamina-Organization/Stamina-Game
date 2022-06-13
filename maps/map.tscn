@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djwqvaxkmnye3" path="res://actors/player/player.tscn" id="4"]
 [ext_resource type="Script" path="res://maps/map.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://bxia7mm044whd" path="res://maps/utility/exit.tscn" id="6"]
-[ext_resource type="PackedScene" uid="uid://bh02ebip6iq1x" path="res://actors/ennemies/test/ennemy_test.tscn" id="8_jhawc"]
+[ext_resource type="PackedScene" uid="uid://bqb4l47cb04he" path="res://actors/ennemies/test/ennemy_test.tscn" id="8_jhawc"]
 [ext_resource type="AudioStream" uid="uid://cr2k7q7ymcte4" path="res://assets/music/Open.mp3" id="8_un6cj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ls8ci"]

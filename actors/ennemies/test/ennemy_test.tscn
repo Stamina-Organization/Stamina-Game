@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh02ebip6iq1x"]
+[gd_scene load_steps=9 format=3 uid="uid://bqb4l47cb04he"]
 
-[ext_resource type="Script" path="res://actors/ennemies/test/ennmy_test.gd" id="1_ixdhl"]
+[ext_resource type="Script" path="res://actors/ennemies/test/ennemy_test.gd" id="1_ixdhl"]
+[ext_resource type="PackedScene" uid="uid://owam3ivdjvdg" path="res://actors/utilities/hurtbox.tscn" id="2_a5c2t"]
+[ext_resource type="PackedScene" uid="uid://ck8ww3gfyqo8d" path="res://actors/utilities/hitbox.tscn" id="2_xausl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i8kl5"]
 
@@ -9,11 +11,17 @@ albedo_color = Color(1, 0.113725, 0.188235, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_amdbw"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_epau3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_664ak"]
+
+[node name="Ennemy" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87415, 0)
+collision_layer = 8
+collision_mask = 7
+script = ExtResource( "1_ixdhl" )
 
 [node name="Ennemy" type="Node3D" parent="."]
-script = ExtResource( "1_ixdhl" )
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource( "CapsuleMesh_i8kl5" )
@@ -27,3 +35,22 @@ shape = SubResource( "CapsuleShape3D_amdbw" )
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18635, 0)
 text = "Ennemy 1"
 uppercase = true
+
+[node name="Hurtbox" parent="." instance=ExtResource( "2_a5c2t" )]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D" parent="Hurtbox" index="0"]
+shape = SubResource( "CapsuleShape3D_epau3" )
+
+[node name="Hitbox" parent="." instance=ExtResource( "2_xausl" )]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource( "CapsuleShape3D_664ak" )
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]

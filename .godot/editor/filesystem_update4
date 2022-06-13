@@ -1,12 +1,1 @@
-res://maps/map.tscn
-res://actors/player/Spells/Spell1/Spell1_test.gd
-res://actors/player/Spells/Spell1/Spell1.tscn
-res://launcher/launcher.tscn
-res://actors/player/player.tscn
-res://launcher/settings/settingswindows.tscn
-res://actors/ennemies/test/ennemy_test.tscn
-res://maps/utility/exit.tscn
 res://utilities/loading/LoadingScreen.tscn
-res://launcher/start_settings.gd
-res://launcher/credits/credits.tscn
-res://launcher/launcher.gd
