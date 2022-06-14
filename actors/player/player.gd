@@ -43,7 +43,7 @@ func _physics_process(delta):
 	true_velocity.z = lerp(true_velocity.z, movement.z * speed,acceleration * delta)
 	if !is_on_floor():
 		true_velocity.y += GRAVITY * delta
-
+	
 	velocity = true_velocity
 	move_and_slide()
 	switch_camera()

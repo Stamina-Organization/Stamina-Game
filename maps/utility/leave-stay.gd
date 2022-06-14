@@ -1,10 +1,10 @@
 extends Control
 
 @onready var leave_windows = $"."
-var windows_show = true
+var windows_show = false
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if windows_show == true:
 			leave_windows.hide()
@@ -23,7 +23,3 @@ func _on_stay_game_pressed():
 
 func _on_leave_game_pressed():
 	ChangeScene.goto_scene("res://launcher/launcher.tscn", self, false)
-
-
-func _on_panel_visibility_changed():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

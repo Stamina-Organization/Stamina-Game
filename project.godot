@@ -8,6 +8,16 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node",
+"class": &"Sword",
+"language": &"GDScript",
+"path": "res://actors/utilities/Sword.gd"
+}]
+_global_script_class_icons={
+"Sword": ""
+}
+
 [application]
 
 config/name="Stamina Game"
@@ -17,7 +27,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Damage="*res://actors/utilities/damage.gd"
+Damage="*res://actors/utilities/Sword.gd"
 ChangeScene="*res://utilities/loading/ChangeScene.gd"
 
 [debug]

@@ -35,9 +35,12 @@ func _process(_delta):
 
 func goto_scene(path, current_scene, windows_mode: bool):
 	get_tree().change_scene("res://utilities/loading/LoadingScreen.tscn")
+	#add_child(loading_screen)
 	screen = windows_mode
 	curr = current_scene
 	real_path = path
 	
 	print("Début du chargement...")
 	ResourceLoader.load_threaded_request(real_path)
+
+

@@ -46,7 +46,7 @@ script = ExtResource( "5" )
 environment = SubResource( "Environment_svl7j" )
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.327218, -0.548735, 0.769298, 0, 0.814116, 0.580703, -0.944949, 0.190016, -0.266393, 35.8792, 24.2434, -11.4627)
+transform = Transform3D(-0.327218, -0.548735, 0.769298, 0, 0.814116, 0.580703, -0.944949, 0.190016, -0.266393, 6.42362, 24.2434, -41.2933)
 light_color = Color(0.968627, 0.815686, 0.815686, 1)
 shadow_enabled = true
 directional_shadow_max_distance = 250.0
@@ -128,11 +128,57 @@ material = SubResource( "3" )
 
 [node name="Exit" parent="." instance=ExtResource( "6" )]
 
-[node name="CharacterBody3D" parent="." instance=ExtResource( "8_jhawc" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9302, 2.00193, 0)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( "8_un6cj" )
+pitch_scale = 0.5
 autoplay = true
+
+[node name="Ennemy 1" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9302, 2.00193, 5.72765)
+
+[node name="Ennemy 2" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 10.7276)
+
+[node name="Ennemy 3" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1852, 2.00193, 22.0023)
+
+[node name="Ennemy 4" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.255, 2, 27.0023)
+
+[node name="Ennemy 5" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5539, 2.00193, -8.87131)
+
+[node name="Ennemy 6" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4841, 2, -3.87131)
+
+[node name="Ennemy 7" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.299, 2.00193, 7.40334)
+
+[node name="Ennemy 8" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2292, 2, 12.4033)
+
+[node name="Ennemy 9" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, 12.1287, 2.00193, -15.4712)
+
+[node name="Ennemy 10" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, 18.7577, 2, -19.7019)
+
+[node name="Ennemy 11" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, 22.2878, 2.00193, -30.6304)
+
+[node name="Ennemy 12" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, 28.9168, 2, -34.8611)
+
+[node name="Ennemy 13" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, -31.807, 2.00193, -6.10718)
+
+[node name="Ennemy 14" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, -25.178, 2, -10.3379)
+
+[node name="Ennemy 15" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, -21.6479, 2.00193, -21.2664)
+
+[node name="Ennemy 16" parent="." instance=ExtResource( "8_jhawc" )]
+transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, -15.0189, 2, -25.4971)
 
 [connection signal="cast_spell" from="Player" to="." method="_on_player_cast_spell"]

@@ -10,11 +10,10 @@ signal receive_damage(amount: int, time)
 
 func _process(delta):
 	if hp_last_hit > hp:
+		emit_signal("receive_damage", hp_last_hit - hp, null)
 		hp_last_hit = hp
-		emit_signal("receive_damage")
-		print("dégats reçu")
 	
-	if hp == 0:
+	if hp == 0 or hp < 0:
 		emit_signal("die", self)
 		queue_free()
 
@@ -22,3 +21,8 @@ func _on_hurtbox_area_entered(hitbox):
 	var base_damage = hitbox.damage
 	self.hp -= base_damage
 	print(hitbox.get_parent().name, "'s hitbox touched ", name, "'hurtbox dealt ", str(base_damage))
+
+
+func _on_ennemy_receive_damage(amount, time):
+	$DamageReceiveLable.text = str(-amount)
+	$Label3D.text = "Ennemy " + str(hp)

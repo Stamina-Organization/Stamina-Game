@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://b618ab78s7chf"]
+
+[ext_resource type="FontData" uid="uid://bfaxywek0j4u3" path="res://assets/fonts/Kenney Future Narrow.ttf" id="1_legh7"]
+[ext_resource type="Texture2D" uid="uid://bdjfdyjualfpi" path="res://assets/icons/red-cross.png" id="2_iyfap"]
+
+[sub_resource type="Font" id="Font_ger8x"]
+data/0 = ExtResource( "1_legh7" )
+
+[node name="InGameSettings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -186.0
+offset_right = 189.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="LeaveGamePopup" type="Button" parent="Panel"]
+offset_left = 21.0
+offset_top = 317.0
+offset_right = 99.0
+offset_bottom = 348.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource( "Font_ger8x" )
+text = "Quitter"
+
+[node name="LeaveMenu" type="Button" parent="Panel"]
+offset_left = 330.0
+offset_top = 10.0
+offset_right = 370.0
+offset_bottom = 50.0
+icon = ExtResource( "2_iyfap" )
+expand_icon = true
+
+[node name="TabContainer" type="TabContainer" parent="Panel"]
+offset_left = 38.0
+offset_top = 15.0
+offset_right = 78.0
+offset_bottom = 55.0

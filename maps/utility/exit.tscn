@@ -35,6 +35,8 @@ offset_left = -112.5
 offset_right = 112.5
 offset_bottom = 64.0
 grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/normal_font = SubResource( "Font_r548d" )
 bbcode_enabled = true
 text = "
@@ -46,6 +48,8 @@ offset_left = 40.0
 offset_top = 100.0
 offset_right = 110.0
 offset_bottom = 135.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource( "Font_r064b" )
 text = "Oui"
 
@@ -54,8 +58,9 @@ offset_left = 160.0
 offset_top = 100.0
 offset_right = 230.0
 offset_bottom = 137.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Non"
 
-[connection signal="visibility_changed" from="Panel" to="." method="_on_panel_visibility_changed"]
 [connection signal="pressed" from="Panel/LeaveGame" to="." method="_on_leave_game_pressed"]
 [connection signal="pressed" from="Panel/StayGame" to="." method="_on_stay_game_pressed"]

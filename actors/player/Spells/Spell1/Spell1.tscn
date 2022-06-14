@@ -31,6 +31,7 @@ surface_material_override/0 = SubResource( "StandardMaterial3D_htlck" )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 8.0
+one_shot = true
 autostart = true
 
 [node name="Hitbox" parent="." instance=ExtResource( "2_c7vr5" )]

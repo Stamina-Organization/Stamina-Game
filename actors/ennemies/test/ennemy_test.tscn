@@ -33,7 +33,7 @@ shape = SubResource( "CapsuleShape3D_amdbw" )
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18635, 0)
-text = "Ennemy 1"
+text = "Ennemy"
 uppercase = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( "2_a5c2t" )]
@@ -45,11 +45,15 @@ shape = SubResource( "CapsuleShape3D_epau3" )
 
 [node name="Hitbox" parent="." instance=ExtResource( "2_xausl" )]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 shape = SubResource( "CapsuleShape3D_664ak" )
 
+[node name="DamageReceiveLable" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41564, 0)
+
+[connection signal="receive_damage" from="." to="." method="_on_ennemy_receive_damage"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hurtbox"]
