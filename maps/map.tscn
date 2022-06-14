@@ -1,12 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://bf5yqct5ldf0o"]
+[gd_scene load_steps=15 format=3 uid="uid://0mid3vde5dnu"]
 
 [ext_resource type="Texture2D" uid="uid://o4kcvijyr5o6" path="res://assets/textures/red_grid.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://u1fi2hi1q5th" path="res://assets/textures/dark_grid.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://bbaxe7v6a4os6" path="res://assets/icons/purple_grid.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://djwqvaxkmnye3" path="res://actors/player/player.tscn" id="4"]
 [ext_resource type="Script" path="res://maps/map.gd" id="5"]
-[ext_resource type="PackedScene" uid="uid://bxia7mm044whd" path="res://maps/utility/exit.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://bqb4l47cb04he" path="res://actors/ennemies/test/ennemy_test.tscn" id="8_jhawc"]
+[ext_resource type="PackedScene" uid="uid://cc5wxcolrcygx" path="res://maps/utilities/InGameSettings.tscn" id="8_k34s8"]
 [ext_resource type="AudioStream" uid="uid://cr2k7q7ymcte4" path="res://assets/music/Open.mp3" id="8_un6cj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ls8ci"]
@@ -126,59 +126,70 @@ polygon = PackedVector2Array(0, 0, 0, 5, 8, 0, 1, 0)
 depth = 3.0
 material = SubResource( "3" )
 
-[node name="Exit" parent="." instance=ExtResource( "6" )]
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( "8_un6cj" )
 pitch_scale = 0.5
 autoplay = true
 
-[node name="Ennemy 1" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="InGameSettings" parent="." instance=ExtResource( "8_k34s8" )]
+visible = false
+
+[node name="HSlider" parent="InGameSettings/Panel/TabContainer/Generals" index="1"]
+min_value = 1.0
+value = 50.0
+
+[node name="Ennemies" type="Node3D" parent="."]
+
+[node name="Ennemy 1" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9302, 2.00193, 5.72765)
 
-[node name="Ennemy 2" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 2" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 10.7276)
 
-[node name="Ennemy 3" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 3" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1852, 2.00193, 22.0023)
 
-[node name="Ennemy 4" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 4" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.255, 2, 27.0023)
 
-[node name="Ennemy 5" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 5" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5539, 2.00193, -8.87131)
 
-[node name="Ennemy 6" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 6" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4841, 2, -3.87131)
 
-[node name="Ennemy 7" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 7" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.299, 2.00193, 7.40334)
 
-[node name="Ennemy 8" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 8" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2292, 2, 12.4033)
 
-[node name="Ennemy 9" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 9" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, 12.1287, 2.00193, -15.4712)
 
-[node name="Ennemy 10" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 10" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, 18.7577, 2, -19.7019)
 
-[node name="Ennemy 11" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 11" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, 22.2878, 2.00193, -30.6304)
 
-[node name="Ennemy 12" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 12" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, 28.9168, 2, -34.8611)
 
-[node name="Ennemy 13" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 13" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, -31.807, 2.00193, -6.10718)
 
-[node name="Ennemy 14" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 14" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, -25.178, 2, -10.3379)
 
-[node name="Ennemy 15" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 15" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, -21.6479, 2.00193, -21.2664)
 
-[node name="Ennemy 16" parent="." instance=ExtResource( "8_jhawc" )]
+[node name="Ennemy 16" parent="Ennemies" instance=ExtResource( "8_jhawc" )]
 transform = Transform3D(-0.992688, 0, 0.120709, 0, 1, 0, -0.120709, 0, -0.992688, -15.0189, 2, -25.4971)
 
 [connection signal="cast_spell" from="Player" to="." method="_on_player_cast_spell"]
+[connection signal="pressed" from="InGameSettings/Panel/LeaveMenu" to="." method="_on_leave_menu_pressed"]
+[connection signal="value_changed" from="InGameSettings/Panel/TabContainer/Generals/HSlider" to="." method="_on_h_slider_value_changed"]
+
+[editable path="InGameSettings"]

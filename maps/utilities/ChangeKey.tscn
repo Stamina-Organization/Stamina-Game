@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjbnw0boxo2n4"]
+
+[ext_resource type="FontData" uid="uid://bfaxywek0j4u3" path="res://assets/fonts/Kenney Future Narrow.ttf" id="1_nj1jk"]
+
+[sub_resource type="Font" id="Font_aoasn"]
+data/0 = ExtResource( "1_nj1jk" )
+
+[sub_resource type="Font" id="Font_2wyk1"]
+data/0 = ExtResource( "1_nj1jk" )
+
+[node name="ChangeKey" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -35.0
+offset_right = 64.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="Label" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 12.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource( "Font_aoasn" )
+metadata/_edit_layout_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+anchor_right = 1.0
+offset_bottom = 29.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = SubResource( "Font_2wyk1" )
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]Choississez la nouvelle touche :"
+metadata/_edit_layout_mode = 1

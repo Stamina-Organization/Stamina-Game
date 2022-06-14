@@ -1,19 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxia7mm044whd"]
+[gd_scene load_steps=5 format=3 uid="uid://etxqif1ksvut"]
 
-[ext_resource type="Script" path="res://maps/utility/leave-stay.gd" id="1"]
-[ext_resource type="FontData" uid="uid://bfaxywek0j4u3" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_llujb"]
+[ext_resource type="Script" path="res://maps/utilities/leave-stay.gd" id="1_va4pf"]
+[ext_resource type="FontData" uid="uid://bfaxywek0j4u3" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_8yvcw"]
 
 [sub_resource type="Font" id="Font_r548d"]
-data/0 = ExtResource( "2_llujb" )
+data/0 = ExtResource( "2_8yvcw" )
 
 [sub_resource type="Font" id="Font_r064b"]
-data/0 = ExtResource( "2_llujb" )
+data/0 = ExtResource( "2_8yvcw" )
 
 [node name="Exit" type="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( "1" )
+script = ExtResource( "1_va4pf" )
 
 [node name="Panel" type="Panel" parent="."]
 anchor_left = 0.5
