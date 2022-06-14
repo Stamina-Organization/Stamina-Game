@@ -3,10 +3,10 @@ extends Control
 @onready var settings_item = $Panel/ItemList
 
 var control_settings = [
-	"forward : Z",
-	"backward : S",
-	"left : Q",
-	"right : D",
+	"forward : Z ou fléche haut",
+	"backward : S ou fléche bas",
+	"left : Q ou fléche gauche",
+	"right : D ou fléche droite",
 	"jump : Espace",
 	"dodge : Shift (à venir...)",
 	"first_spell : a",
