@@ -1,10 +1,11 @@
+HSlider
+RichTextLabel
+Control
 TabContainer
 ItemList
 HSeparator
 GridContainer
-RichTextLabel
 Button
-HSlider
 LineEdit
 Panel
 Timer
@@ -29,5 +30,3 @@ RigidDynamicBody3D
 VehicleBody3D
 CheckButton
 MeshInstance3D
-AnimatableBody3D
-Control

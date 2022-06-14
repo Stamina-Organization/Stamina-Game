@@ -22,8 +22,8 @@ _global_script_class_icons={
 
 config/name="Stamina Game"
 run/main_scene="res://launcher/launcher.tscn"
-config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
+config/features=PackedStringArray("4.0")
 
 [autoload]
 
