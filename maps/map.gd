@@ -44,7 +44,7 @@ func _on_player_cast_spell(spell, direction, location):
 
 
 func _on_h_slider_value_changed(value):
-	$AudioStreamPlayer.volume_db = value -40
+	$AudioStreamPlayer.volume_db = (value -80) /2
 
 
 func _on_leave_menu_pressed():
