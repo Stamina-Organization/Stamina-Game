@@ -50,7 +50,8 @@ func _physics_process(delta):
 	switch_camera()
 	
 	if Input.is_action_just_pressed("first_spell"):
-		emit_signal("cast_spell", spell_one, rotation, position)
+		if !map.settings_is_visible == true:
+			emit_signal("cast_spell", spell_one, rotation, position)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
