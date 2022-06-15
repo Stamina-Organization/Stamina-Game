@@ -24,6 +24,7 @@ var true_velocity : Vector3 = Vector3.ZERO
 @onready var tps = $TPS
 @onready var camcollider = $TPS/h/v/CamCollider
 @onready var camera = $TPS/h/v/Camera3D
+@onready var map = get_node("/root/Map")
 
 
 func _ready():
@@ -74,18 +75,17 @@ func _handle_camera_rotation(event):
 
 func _get_movement_direction():
 	var direction = Vector3.DOWN
-	
-	if Input.is_action_pressed("forward"):
-		direction -= transform.basis.z
-	if Input.is_action_pressed("backward"):
-		direction += transform.basis.z
-	if Input.is_action_pressed("left"):
-		direction -= transform.basis.x
-	if Input.is_action_pressed("right"):
-		direction += transform.basis.x
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		true_velocity.y = jump_impulse
-	
+	if !map.settings_is_visible == true:
+		if Input.is_action_pressed("forward"):
+			direction -= transform.basis.z
+		if Input.is_action_pressed("backward"):
+			direction += transform.basis.z
+		if Input.is_action_pressed("left"):
+			direction -= transform.basis.x
+		if Input.is_action_pressed("right"):
+			direction += transform.basis.x
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			true_velocity.y = jump_impulse
 	return direction.normalized()
 
 func switch_camera():
