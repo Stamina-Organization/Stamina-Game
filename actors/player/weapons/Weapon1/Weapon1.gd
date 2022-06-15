@@ -2,6 +2,7 @@ extends Sword
 
 @onready var weapon = $Weapon
 @onready var hitbox = $Hitbox
+@onready var map = get_node("/root/Map")
 var on_attack = false
 
 
@@ -12,13 +13,14 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("attack"):
-		if on_attack == false :
-			on_attack = true
-			$Timer.start()
-			hitbox.set_collision_layer_value(3, true)
-			print("That's enable hitbox")
-		if on_attack == true:
-			print("On peut pas attaquer maintenant")
+		if !map.settings_is_visible == true:
+			if on_attack == false :
+				on_attack = true
+				$Timer.start()
+				hitbox.set_collision_layer_value(3, true)
+				print("That's enable hitbox")
+			if on_attack == true:
+				print("On peut pas attaquer maintenant")
 
 
 func _on_timer_timeout():
