@@ -63,16 +63,9 @@ func _handle_camera_rotation(event):
 		head.rotate_x(deg2rad(-event.relative.y * camera_sensitivity))
 		head.rotation.x = clamp(head.rotation.x, deg2rad(MIN_FPS_CAMERA_ANGLE), deg2rad((MAX_FPS_CAMERA_ANGLE)))
 	elif camera_mode == "tps":
-		#if velocity.x > 0 or velocity.x < 0 && velocity.z > 0 or velocity.z < 0:
 		rotate_y(deg2rad(-event.relative.x * camera_sensitivity))
 		tps.rotate_x(deg2rad(-event.relative.y * camera_sensitivity))
 		tps.rotation.x = clamp(tps.rotation.x, deg2rad(MIN_TPS_CAMERA_ANGLE), deg2rad((MAX_TPS_CAMERA_ANGLE)))
-			#var direction = Basis.from_euler (Vector3(velocity.x, 0, velocity.z))
-			#tps.global_transform.basis = direction
-		#elif velocity.x == 0 && velocity.z == 0 :
-		#	$TPS/h.rotate_y(deg2rad(-event.relative.x * camera_sensitivity))
-		#	$TPS/h/v.rotate_x(deg2rad(-event.relative.y * camera_sensitivity))
-		#	$TPS/h/v.rotation.x = clamp($TPS/h/v.rotation.x, deg2rad(MIN_TPS_CAMERA_ANGLE), deg2rad((MAX_TPS_CAMERA_ANGLE)))
 
 func _get_movement_direction():
 	var direction = Vector3.DOWN
