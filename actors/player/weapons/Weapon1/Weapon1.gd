@@ -7,7 +7,7 @@ var on_attack = false
 
 func _ready():
 	var c = Epic_Sword.new()
-	print(c.class_damage, Sword.damage)
+	print(c.class_damage)
 
 
 func _process(_delta):
