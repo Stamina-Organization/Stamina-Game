@@ -128,6 +128,7 @@ material = SubResource( "3" )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( "8_un6cj" )
+volume_db = -15.0
 pitch_scale = 0.5
 autoplay = true
 
