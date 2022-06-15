@@ -31,7 +31,7 @@ func _ready():
 	start_camera(camera_mode)
 	
 
-func _process(delta):
+func _process(_delta):
 	if camcollider.is_colliding():
 		camera.global_transform.origin = camcollider.get_collision_point()
 	#else:
@@ -83,7 +83,7 @@ func _get_movement_direction():
 		direction -= transform.basis.x
 	if Input.is_action_pressed("right"):
 		direction += transform.basis.x
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		true_velocity.y = jump_impulse
 	
 	return direction.normalized()

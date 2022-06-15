@@ -2,4 +2,8 @@ extends Node
 
 class_name Sword
 
-var damage:int = 0
+class Epic_Sword: 
+	var class_damage: int = 20
+	
+
+var damage:int = 50
