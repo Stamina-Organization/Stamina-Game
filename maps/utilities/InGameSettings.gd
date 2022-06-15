@@ -5,7 +5,7 @@ extends Control
 @onready var change_key_label = $Panel/ChangeKey/Panel/Label
 
 var listen_new_key: bool = false
-var new_key : Object
+var new_key : Object = null
 var true_index 
 var is_visible: bool = false
 
@@ -37,7 +37,7 @@ func _process(_delta):
 
 func _input(event):
 	if listen_new_key == true:
-		if event is InputEventMouseMotion:
+		if event is InputEventMouse:
 			return
 		else:
 			new_key = event
