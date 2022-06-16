@@ -1,4 +1,4 @@
-extends Sword
+extends Item
 
 @onready var weapon = $Weapon
 @onready var hitbox = $Hitbox
@@ -7,7 +7,7 @@ var on_attack = false
 
 
 func _ready():
-	var c = Epic_Sword.new()
+	var c = EpicSword.new()
 	print(c.class_damage)
 
 

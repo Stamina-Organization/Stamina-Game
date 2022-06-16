@@ -10,24 +10,24 @@ config_version=5
 
 _global_script_classes=[{
 "base": "Node",
-"class": &"Sword",
+"class": &"Item",
 "language": &"GDScript",
-"path": "res://actors/utilities/Sword.gd"
+"path": "res://actors/utilities/Item.gd"
 }]
 _global_script_class_icons={
-"Sword": ""
+"Item": ""
 }
 
 [application]
 
 config/name="Stamina Game"
 run/main_scene="res://launcher/launcher.tscn"
-config/icon="res://icon.png"
 config/features=PackedStringArray("4.0")
+config/icon="res://icon.png"
 
 [autoload]
 
-Damage="*res://actors/utilities/Sword.gd"
+Damage="*res://actors/utilities/Item.gd"
 ChangeScene="*res://utilities/loading/ChangeScene.gd"
 
 [debug]
